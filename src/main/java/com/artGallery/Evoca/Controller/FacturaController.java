@@ -1,10 +1,8 @@
 package com.artGallery.Evoca.Controller;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.artGallery.Evoca.Model.FacturaModel;
+import com.artGallery.Evoca.Service.FacturaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.artGallery.Evoca.Model.FacturaModel;
-import com.artGallery.Evoca.Model.ObraModel;
-import com.artGallery.Evoca.Model.userModel;
-import com.artGallery.Evoca.Service.FacturaService;
-import com.artGallery.Evoca.Service.ObraService;
-import com.artGallery.Evoca.Service.userService;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value="/api/v1")
@@ -33,10 +28,9 @@ public class FacturaController {
 	
 	@PostMapping(value="/factura")
 	public ResponseEntity<Object> create(@RequestBody FacturaModel factura){ 
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<>();
 		try {
-			factura = factserv.insertFactura(factura);  
-			return new ResponseEntity<Object>(factura,HttpStatus.OK);
+			return new ResponseEntity<>(factserv.insertFactura(factura),HttpStatus.OK);
 		} 
 		catch (Exception e) {
 			map.put("No se Guardo la Factura", e.getMessage());
@@ -70,7 +64,7 @@ public class FacturaController {
 		} 
  	}
 	
-	@DeleteMapping("/fatura/{id}")
+	@DeleteMapping("/factura/{id}")
 	public ResponseEntity<Object> delete(@PathVariable Long id){ 
 		Map<String, Object> map = new HashMap<String, Object>();
 		try { 
@@ -87,7 +81,7 @@ public class FacturaController {
 	
 	@PutMapping("/factura/{id}")
 	public ResponseEntity<Object> update(@RequestBody FacturaModel factura, @PathVariable Long id){ 
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<>();
 		try {
 			
 			FacturaModel currentFactura = factserv.findById(id);
@@ -96,10 +90,8 @@ public class FacturaController {
 			currentFactura.setForma_pago(factura.getForma_pago());
 			currentFactura.setIva(factura.getIva());
 			currentFactura.setTotal_Factura(factura.getTotal_Factura());
-			
-			FacturaModel res = factserv.insertFactura(factura);
-			
-			return new ResponseEntity<Object>(res,HttpStatus.OK);
+
+			return new ResponseEntity<>(factserv.insertFactura(currentFactura),HttpStatus.OK);
 		} 
 		catch (Exception e) {
 			map.put("No se realizo la modificacion", e.getMessage());
