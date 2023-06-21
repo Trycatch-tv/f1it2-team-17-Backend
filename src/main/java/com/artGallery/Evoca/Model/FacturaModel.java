@@ -27,15 +27,7 @@ public class FacturaModel {
 	private double total_Factura;
     @Column
    	private int id_Usuario;
-    
-   /* @ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH})
-	@JoinColumn(name="id_Usuario")
-    private userModel usuario;*/
-
-    
-    
-
-
+  
 	public String getNumero_Factura() {
 		return numero_Factura;
 	}
@@ -82,15 +74,6 @@ public class FacturaModel {
 	public void setTotal_Factura(double total_Factura) {
 		this.total_Factura = total_Factura;
 	}
-
-	/*public userModel getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(userModel usuario) {
-		this.usuario = usuario;
-	}
-	*/
-    
+  
 	
 }

@@ -25,12 +25,7 @@ public class DetalleFacturaModel {
    	private double valor_Total;
     @Column
    	private int id_Factura;
-    
-   /* @ManyToOne(cascade= {CascadeType.PERSIST})
-   	@JoinColumn(name="id_Factura",nullable = false)
-    private FacturaModel factura;*/
-    
-    
+     
 	public Long getId_Detalle_Factura() {
 		return id_Detalle_Factura;
 	}
@@ -65,13 +60,7 @@ public class DetalleFacturaModel {
 	public void setValor_Total(double valor_Total) {
 		this.valor_Total = valor_Total;
 	}
-	/*public FacturaModel getFactura() {
-		return factura;
-	}
-	public void setFactura(FacturaModel factura) {
-		this.factura = factura;
-	}*/
-    
+	
     
   
 }

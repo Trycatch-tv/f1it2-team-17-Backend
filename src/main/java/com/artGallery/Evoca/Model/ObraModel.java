@@ -2,16 +2,12 @@ package com.artGallery.Evoca.Model;
 
 
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -36,18 +32,26 @@ public class ObraModel {
     private String medio;
 	@Column
     private double precio;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_autor")
-    private AutorModel Autor;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_categoria")
-    private CategoriaModel categoria;
-	
-	
-	public ObraModel() {
-		super();
+	@Column
+    private int id_autor;
+	@Column
+    private int id_categoria;
+
+
+	public int getId_autor() {
+		return id_autor;
+	}
+
+	public void setId_autor(int id_autor) {
+		this.id_autor = id_autor;
+	}
+
+	public int getId_categoria() {
+		return id_categoria;
+	}
+
+	public void setId_categoria(int id_categoria) {
+		this.id_categoria = id_categoria;
 	}
 
 	public Long getId_Obra() {
@@ -74,21 +78,7 @@ public class ObraModel {
 		this.descripcion = descripcion;
 	}
     
-	public AutorModel getAutor() {
-		return Autor;
-	}
-
-	public void setAutor(AutorModel autor) {
-		Autor = autor;
-	}
-
-	public CategoriaModel getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(CategoriaModel categoria) {
-		this.categoria = categoria;
-	}
+	
 
 	public String getDimensiones() {
 		return dimensiones;
@@ -97,8 +87,6 @@ public class ObraModel {
 	public void setDimensiones(String dimensiones) {
 		this.dimensiones = dimensiones;
 	}
-
-
 
 	public String getAño() {
 		return año;
@@ -124,11 +112,7 @@ public class ObraModel {
 		this.precio = precio;
 	}
     
-	
-	
-	
 
-	
 	
 }
 
